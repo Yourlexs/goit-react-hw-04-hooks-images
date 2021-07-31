@@ -76,7 +76,11 @@ export default function App() {
       )}
       {error && <p>Oops...</p>}
       {shouldRenderLoadMoreButton && (
-        <Button onClick={fetchImages} totalImages={totalImages} />
+        <Button
+          onClick={fetchImages}
+          totalImages={totalImages}
+          currentPage={currentPage}
+        />
       )}
       {showModal && <Modal onClose={toggleModal} image={imageForModal} />}
     </>
