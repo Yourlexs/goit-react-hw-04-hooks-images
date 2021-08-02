@@ -18,22 +18,17 @@ export default function App() {
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  useEffect(
-    prevSearchQuery => {
-      if (!searchQuery) {
-        return;
-      }
-
-      if (prevSearchQuery === searchQuery) {
-        return;
-      }
-
-      fetchImages();
-    },
-    [searchQuery],
-  );
+  useEffect(() => {
+    if (!searchQuery) {
+      return;
+    }
+    fetchImages();
+  }, [searchQuery]);
 
   const onChangeQuery = query => {
+    if (query === searchQuery) {
+      return;
+    }
     setImages([]);
     setCurrentPage(1);
     setSearchQuery(query);
